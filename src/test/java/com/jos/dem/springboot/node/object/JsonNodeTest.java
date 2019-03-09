@@ -7,6 +7,8 @@ import java.util.Date;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -19,16 +21,22 @@ import org.slf4j.LoggerFactory;
 
 public class JsonNodeTest {
 
+  private JsonNode node;
   private ObjectMapper mapper = new ObjectMapper();
   private Logger log = LoggerFactory.getLogger(this.getClass());
+
+  @BeforeEach
+  void init() throws Exception {
+    log.info("Getting Json Node from Json");
+    String json = "{\"id\":1196,\"nickname\":\"josdem\",\"email\":\"joseluis.delacruz@gmail.com\"}";
+    node = mapper.readTree(json);
+  }
+
 
   @Test
   @DisplayName("Validate Json to Json Node transformation")
   void shouldGetJsonNodeFromJson() throws Exception {
     log.info("Running: Validate json to json node transformation at " + new Date());
-
-    String json = "{\"id\":1196,\"nickname\":\"josdem\",\"email\":\"joseluis.delacruz@gmail.com\"}";
-    JsonNode node = mapper.readTree(json);
 
     assertAll("node",
       () -> assertEquals(1196, node.get("id").intValue(), "Should get id"),
@@ -43,8 +51,6 @@ public class JsonNodeTest {
   void shouldGetPersonFromJsonNode() throws Exception {
     log.info("Running: Validate json to json node transformation at " + new Date());
 
-    String json = "{\"id\":1196,\"nickname\":\"josdem\",\"email\":\"joseluis.delacruz@gmail.com\"}";
-    JsonNode node = mapper.readTree(json);
     Person person = mapper.treeToValue(node, Person.class);
 
     assertAll("person",
@@ -54,8 +60,6 @@ public class JsonNodeTest {
     );
 
   }
-
-
 
   @Test
   @DisplayName("Validate Person to Json Node transformation")
@@ -70,6 +74,11 @@ public class JsonNodeTest {
       () -> assertEquals("email", node.get("email").textValue(), "should get email")
     );
 
+  }
+
+  @AfterEach
+  void finish() throws Exception {
+    log.info("Test execution finished");
   }
 
 }
