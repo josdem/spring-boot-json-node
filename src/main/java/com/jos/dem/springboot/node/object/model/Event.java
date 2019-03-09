@@ -1,4 +1,4 @@
-package com.jos.dem.springboot.node.object;
+package com.jos.dem.springboot.node.object.model;
 
 import java.time.OffsetDateTime;
 

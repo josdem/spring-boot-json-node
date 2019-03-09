@@ -9,6 +9,7 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 
 import org.springframework.stereotype.Service;
 
+import com.jos.dem.springboot.node.object.model.Event;
 import com.jos.dem.springboot.node.object.service.JsonNodeReaderService;
 
 @Service
@@ -16,8 +17,10 @@ public class JsonNodeReaderServiceImpl implements JsonNodeReaderService {
 
   private ObjectMapper mapper = new ObjectMapper();
 
-  public JsonNode read(InputStream inputStream) throws IOException {
-    return  mapper.readTree(inputStream);
+  public Event read(InputStream inputStream) throws IOException {
+    JsonNode jsonNode = mapper.readTree(inputStream);
+    Event event = mapper.treeToValue(jsonNode, Event.class);
+    return event;
   }
 
 }

@@ -5,8 +5,10 @@ import java.io.IOException;
 
 import com.fasterxml.jackson.databind.JsonNode;
 
+import com.jos.dem.springboot.node.object.model.Event;
+
 public interface JsonNodeReaderService {
 
-  JsonNode read(InputStream inputStream) throws IOException;
+  Event read(InputStream inputStream) throws IOException;
 
 }

@@ -9,7 +9,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 
 @Getter
 @Setter
-public class StoreMessagePayload {
+public class Message {
   private String messageId;
   private OffsetDateTime eventAt;
   private JsonNode data;
