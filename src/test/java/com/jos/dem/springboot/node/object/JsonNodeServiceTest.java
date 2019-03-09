@@ -18,6 +18,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.jos.dem.springboot.node.object.model.Event;
+import com.jos.dem.springboot.node.object.model.Message;
 import com.jos.dem.springboot.node.object.service.JsonNodeReaderService;
 
 @ExtendWith(SpringExtension.class)
@@ -40,5 +41,21 @@ public class JsonNodeServiceTest {
     );
 
   }
+
+  @Test
+  @DisplayName("Validate Message values from ClockIn Json file")
+  void shouldGetMessageFromClockInFile() throws Exception {
+    File jsonFile = new File("src/main/resources/ClockIn.json");
+    Event event = service.read(jsonFile);
+    Message[] messages = event.getMessages();
+
+    assertEquals("1", messages.length, "Should contain one message");
+
+    assertAll("message",
+      () -> assertEquals("fbe07c89-ffa7-4c86-9832-5f75cf765737", event.getBatchId(), "Should get batch id")
+    );
+
+  }
+
 
 }
