@@ -27,8 +27,7 @@ public class JsonNodeServiceTest {
   @DisplayName("Should get Json Node from ClockIn Json file")
   public void shouldGetJsonNode() throws Exception {
     File jsonFile = new File("src/main/resources/ClockIn.json");
-    InputStream inputStream = new FileInputStream(jsonFile);
-    assertNotNull(service.read(inputStream));
+    assertNotNull(service.read(jsonFile));
   }
 
 }
