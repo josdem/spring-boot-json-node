@@ -23,7 +23,6 @@ public class JsonNodeServiceTest {
   @Autowired
   private JsonNodeReaderService service;
 
-
   @Test
   @DisplayName("Should get Json Node from ClockIn Json file")
   public void shouldGetJsonNode() throws Exception {
