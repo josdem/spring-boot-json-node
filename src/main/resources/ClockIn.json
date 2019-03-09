@@ -9,8 +9,7 @@
   		"firstname": "Jose",
   		"lastname": "Morales",
   		"nickname": "josdem",
-  		"position": "developer",
-  		"userId": "1196",
+  		"employeeNumber": 1196,
   		"email": "joseluis.delacruz@gmail.com",
   		"clockInDateTime": "2019-03-09T07:36:43-05:00"
   	}

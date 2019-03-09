@@ -85,8 +85,12 @@ public class JsonNodeServiceTest {
 
     JsonNode data = message.getData();
     assertAll("data",
-      () -> assertEquals("Jose", data.get("firstname").textValue(), "Should get firstname"),
-      () -> assertEquals("Morales", data.get("lastname").textValue(), "Should get lastname")
+      () -> assertEquals("Jose", data.get("firstname").textValue(), "Should get Firstname"),
+      () -> assertEquals("Morales", data.get("lastname").textValue(), "Should get Lastname"),
+      () -> assertEquals("josdem", data.get("nickname").textValue(), "Should get Nickname"),
+      () -> assertEquals(1196, data.get("employeeNumber").intValue(), "Should get Employee Number"),
+      () -> assertEquals("joseluis.delacruz@gmail.com", data.get("email").textValue(), "Should get Email"),
+      () -> assertEquals("2019-03-09T07:36:43-05:00", data.get("clockInDateTime"), "Should get clockIn time")
     );
 
   }
