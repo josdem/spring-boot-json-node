@@ -7,7 +7,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 
 import com.jos.dem.springboot.node.object.model.Event;
 
-public interface JsonNodeReaderService {
+public interface EventUnmarshallerService {
 
   Event read(File jsonFile) throws IOException;
 

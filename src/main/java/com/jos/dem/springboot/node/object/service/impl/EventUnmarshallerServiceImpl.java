@@ -15,7 +15,7 @@ import com.jos.dem.springboot.node.object.model.Event;
 import com.jos.dem.springboot.node.object.service.JsonNodeReaderService;
 
 @Service
-public class JsonNodeReaderServiceImpl implements JsonNodeReaderService {
+public class EventUnmarshallerServiceImpl implements JsonNodeReaderService {
 
   private ObjectMapper mapper = new ObjectMapper();
 
