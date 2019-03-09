@@ -32,8 +32,10 @@ public class JsonNodeServiceTest {
     Event event = service.read(jsonFile);
 
     assertAll("event",
-      () -> assertEquals("fbe07c89-ffa7-4c86-9832-5f75cf765737", event.getBatchId(), "Should get batch id")
+      () -> assertEquals("fbe07c89-ffa7-4c86-9832-5f75cf765737", event.getBatchId(), "Should get batch id"),
+      () -> assertEquals("EmployeeClockIn", event.getEventType(), "Should get event type")
     );
+
   }
 
 }
