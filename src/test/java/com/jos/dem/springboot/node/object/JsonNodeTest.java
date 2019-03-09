@@ -76,6 +76,27 @@ public class JsonNodeTest {
 
   }
 
+  @Test
+  @DisplayName("Validate Arguments to Json Node transformation")
+  void shouldGetJsonNodeFromArguments() throws Exception {
+    log.info("Running: Validate arguments to json node transformation at " + new Date());
+    Integer id = 1196;
+    String nickname = "josdem";
+    String email = "joseluis.delacruz@gmail.com";
+
+    JsonNode node = mapper.createObjectNode();
+    ((ObjectNode) node).put("id", 2016);
+    ((ObjectNode) node).put("name", "baeldung.com");
+
+    assertAll("person",
+      () -> assertEquals(1196, node.get("id").intValue(), "Should get id"),
+      () -> assertEquals("josdem", node.get("nickname").textValue(), "Should get nickname"),
+      () -> assertEquals("email", node.get("email").textValue(), "should get email")
+    );
+
+  }
+
+
   @AfterEach
   void finish() throws Exception {
     log.info("Test execution finished");
