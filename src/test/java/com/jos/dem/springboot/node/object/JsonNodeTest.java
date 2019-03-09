@@ -36,7 +36,7 @@ public class JsonNodeTest {
   @Test
   @DisplayName("Validate Json to Json Node transformation")
   void shouldGetJsonNodeFromJson() throws Exception {
-    log.info("Running: Validate json to json node transformation at " + new Date());
+    log.info("Running: Validate json to json node transformation at {}", new Date());
 
     assertAll("node",
       () -> assertEquals(1196, node.get("id").intValue(), "Should get id"),
@@ -49,7 +49,7 @@ public class JsonNodeTest {
   @Test
   @DisplayName("Validate Json Node to Person transformation")
   void shouldGetPersonFromJsonNode() throws Exception {
-    log.info("Running: Validate json to json node transformation at " + new Date());
+    log.info("Running: Validate json to json node transformation at {}", new Date());
 
     Person person = mapper.treeToValue(node, Person.class);
 
@@ -64,7 +64,7 @@ public class JsonNodeTest {
   @Test
   @DisplayName("Validate Person to Json Node transformation")
   void shouldGetJsonNodeFromPerson() throws Exception {
-    log.info("Running: Validate person to json node transformation at " + new Date());
+    log.info("Running: Validate person to json node transformation at {}", new Date());
     Person person = new Person(1196, "josdem","joseluis.delacruz@gmail.com");
     JsonNode node = mapper.valueToTree(person);
 
@@ -79,7 +79,7 @@ public class JsonNodeTest {
   @Test
   @DisplayName("Validate Arguments to Json Node transformation")
   void shouldGetJsonNodeFromArguments() throws Exception {
-    log.info("Running: Validate arguments to json node transformation at " + new Date());
+    log.info("Running: Validate arguments to json node transformation at {}", new Date());
     Integer id = 1196;
     String nickname = "josdem";
     String email = "joseluis.delacruz@gmail.com";
@@ -95,7 +95,6 @@ public class JsonNodeTest {
     );
 
   }
-
 
   @AfterEach
   void finish() throws Exception {
