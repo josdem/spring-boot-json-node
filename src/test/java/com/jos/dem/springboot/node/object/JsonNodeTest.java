@@ -23,6 +23,23 @@ public class JsonNodeTest {
   private Logger log = LoggerFactory.getLogger(this.getClass());
 
   @Test
+  @DisplayName("Validate Json to Json Node transformation")
+  void shouldGetJsonNodeFromJson() throws Exception {
+    log.info("Running: Validate json to json node transformation at " + new Date());
+
+    String json = "{\"id\":1196,\"nickname\":\"josdem\",\"email\":\"joseluis.delacruz@gmail.com\"}";
+    JsonNode node = mapper.readTree(json);
+
+    assertAll("person",
+      () -> assertEquals(1196, node.get("id").intValue(), "Should get id"),
+      () -> assertEquals("josdem", node.get("nickname").textValue(), "Should get nickname"),
+      () -> assertEquals("email", node.get("email").textValue(), "should get email")
+    );
+
+  }
+
+
+  @Test
   @DisplayName("Validate Person to Json Node transformation")
   void shouldGetJsonNodeFromPerson() throws Exception {
     log.info("Running: Validate person to json node transformation at " + new Date());
