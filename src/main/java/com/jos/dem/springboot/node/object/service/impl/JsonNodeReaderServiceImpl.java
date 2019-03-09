@@ -1,6 +1,7 @@
 package com.jos.dem.springboot.node.object.service.impl;
 
 import java.io.InputStream;
+import java.io.IOException;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -15,8 +16,8 @@ public class JsonNodeReaderServiceImpl implements JsonNodeReaderService {
 
   private ObjectMapper mapper = new ObjectMapper();
 
-  public JsonNode read(InputStream inputStream){
-    return  mapper.readTree(exampleInput);
+  public JsonNode read(InputStream inputStream) throws IOException {
+    return  mapper.readTree(inputStream);
   }
 
 }

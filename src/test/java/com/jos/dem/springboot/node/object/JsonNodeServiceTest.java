@@ -1,33 +1,35 @@
 package com.jos.dem.springboot.node.object;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.extension.ExtendWith;
 
+import java.io.File;
+import java.io.InputStream;
+import java.io.FileInputStream;
+
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import java.io.InputStream;
-
-import com.jos.dem.springboot.node.object.service.JsonNodeService;
+import com.jos.dem.springboot.node.object.service.JsonNodeReaderService;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
 public class JsonNodeServiceTest {
 
   @Autowired
-  private JsonNodeService jsonNodeService;
+  private JsonNodeReaderService service;
 
-  private File jsonFile = new File("src/main/resources/ClockIn.json");
 
   @Test
   @DisplayName("Should get Json Node from ClockIn Json file")
-  public void shouldGetJsonNode() {
-    InputStream targetStream = new FileInputStream(jsonFile);
-    assertNotNull(jsonNodeService.read(inputStream));
+  public void shouldGetJsonNode() throws Exception {
+    File jsonFile = new File("src/main/resources/ClockIn.json");
+    InputStream inputStream = new FileInputStream(jsonFile);
+    assertNotNull(service.read(inputStream));
   }
 
 }
