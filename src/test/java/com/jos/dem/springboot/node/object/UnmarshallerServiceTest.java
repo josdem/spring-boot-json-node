@@ -24,7 +24,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.jos.dem.springboot.node.object.model.Event;
 import com.jos.dem.springboot.node.object.model.Message;
-import com.jos.dem.springboot.node.object.service.JsonNodeReaderService;
+import com.jos.dem.springboot.node.object.service.UnmarshallerService;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -36,7 +36,7 @@ public class UnmarshallerServiceTest {
   private Logger log = LoggerFactory.getLogger(this.getClass());
 
   @Autowired
-  private JsonNodeReaderService service;
+  private UnmarshallerService service;
 
   private Event event;
   private Message message;
