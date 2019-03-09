@@ -8,6 +8,7 @@ import lombok.AllArgsConstructor;
 @Getter
 @AllArgsConstructor
 public class Person {
+  private Integer id;
   private String nickname;
   private String email;
 }
