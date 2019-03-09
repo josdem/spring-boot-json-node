@@ -29,7 +29,7 @@ public class JsonNodeServiceTest {
 
   @Test
   @DisplayName("Validate Event values from ClockIn Json file")
-  public void shouldGetEventFromClockInFile() throws Exception {
+  void shouldGetEventFromClockInFile() throws Exception {
     File jsonFile = new File("src/main/resources/ClockIn.json");
     Event event = service.read(jsonFile);
 
