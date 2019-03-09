@@ -47,12 +47,14 @@ public class JsonNodeServiceTest {
   void shouldGetMessageFromClockInFile() throws Exception {
     File jsonFile = new File("src/main/resources/ClockIn.json");
     Event event = service.read(jsonFile);
+
     Message[] messages = event.getMessages();
+    Message message = messages[0];
 
     assertEquals("1", messages.length, "Should contain one message");
 
     assertAll("message",
-      () -> assertEquals("fbe07c89-ffa7-4c86-9832-5f75cf765737", event.getBatchId(), "Should get batch id")
+      () -> assertEquals("4aeaa175-e46d-42eb-83d3-cd02865d4863", message.getMessageId(), "Should get message id")
     );
 
   }
