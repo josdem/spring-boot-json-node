@@ -3,6 +3,8 @@ package com.jos.dem.springboot.node.object;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.time.OffsetDateTime;
+
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -33,7 +35,8 @@ public class JsonNodeServiceTest {
 
     assertAll("event",
       () -> assertEquals("fbe07c89-ffa7-4c86-9832-5f75cf765737", event.getBatchId(), "Should get batch id"),
-      () -> assertEquals("EmployeeClockIn", event.getEventType(), "Should get event type")
+      () -> assertEquals("EmployeeClockIn", event.getEventType(), "Should get event type"),
+      () -> assertEquals(OffsetDateTime.parse("2019-03-09T07:36:43-05:00"), event.getPublishedAt(), "Should get published at time")
     );
 
   }
