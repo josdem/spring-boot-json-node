@@ -6,6 +6,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.util.Date;
 import java.time.OffsetDateTime;
 
+import com.fasterxml.jackson.databind.JsonNode;
+
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.AfterEach;
@@ -37,6 +39,7 @@ public class JsonNodeServiceTest {
   private JsonNodeReaderService service;
 
   private Event event;
+  private Message message;
 
   @BeforeEach
   void init() throws Exception {
@@ -64,12 +67,26 @@ public class JsonNodeServiceTest {
     log.info("Running: Validate Message values from event at " + new Date());
 
     Message[] messages = event.getMessages();
-    Message message = messages[0];
+    message = messages[0];
 
     assertEquals("1", messages.length, "Should contain one message");
 
     assertAll("message",
-      () -> assertEquals("4aeaa175-e46d-42eb-83d3-cd02865d4863", message.getMessageId(), "Should get message id")
+      () -> assertEquals("4aeaa175-e46d-42eb-83d3-cd02865d4863", message.getMessageId(), "Should get message id"),
+      () -> assertEquals(OffsetDateTime.parse("2019-03-09T07:36:43-05:00"), event.getPublishedAt(), "Should get published at time")
+    );
+
+  }
+
+  @Test
+  @DisplayName("Validate Data values from message")
+  void shouldGetDataFromMessage() throws Exception {
+    log.info("Running: Validate Data values from message at " + new Date());
+
+    JsonNode data = message.getData();
+    assertAll("data",
+      () -> assertEquals("Jose", data.get("firstname").textValue(), "Should get firstname"),
+      () -> assertEquals("Morales", data.get("lastname").textValue(), "Should get lastname")
     );
 
   }
