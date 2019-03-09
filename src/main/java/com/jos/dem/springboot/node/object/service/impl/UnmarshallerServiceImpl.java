@@ -12,10 +12,10 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.springframework.stereotype.Service;
 
 import com.jos.dem.springboot.node.object.model.Event;
-import com.jos.dem.springboot.node.object.service.JsonNodeReaderService;
+import com.jos.dem.springboot.node.object.service.UnmarshallerService;
 
 @Service
-public class EventUnmarshallerServiceImpl implements JsonNodeReaderService {
+public class UnmarshallerServiceImpl implements UnmarshallerService {
 
   private ObjectMapper mapper = new ObjectMapper();
 

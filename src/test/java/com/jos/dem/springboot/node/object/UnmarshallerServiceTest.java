@@ -31,7 +31,7 @@ import org.slf4j.LoggerFactory;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
-public class JsonNodeServiceTest {
+public class UnmarshallerServiceTest {
 
   private Logger log = LoggerFactory.getLogger(this.getClass());
 
