@@ -30,13 +30,31 @@ public class JsonNodeTest {
     String json = "{\"id\":1196,\"nickname\":\"josdem\",\"email\":\"joseluis.delacruz@gmail.com\"}";
     JsonNode node = mapper.readTree(json);
 
-    assertAll("person",
+    assertAll("node",
       () -> assertEquals(1196, node.get("id").intValue(), "Should get id"),
       () -> assertEquals("josdem", node.get("nickname").textValue(), "Should get nickname"),
       () -> assertEquals("email", node.get("email").textValue(), "should get email")
     );
 
   }
+
+  @Test
+  @DisplayName("Validate Json Node to Person transformation")
+  void shouldGetPersonFromJsonNode() throws Exception {
+    log.info("Running: Validate json to json node transformation at " + new Date());
+
+    String json = "{\"id\":1196,\"nickname\":\"josdem\",\"email\":\"joseluis.delacruz@gmail.com\"}";
+    JsonNode node = mapper.readTree(json);
+    Person person = mapper.treeToValue(node, Person.class);
+
+    assertAll("person",
+      () -> assertEquals(1196, person.getId(), "Should get id"),
+      () -> assertEquals("josdem", person.getNickname(), "Should get nickname"),
+      () -> assertEquals("email", person.getEmail(), "should get email")
+    );
+
+  }
+
 
 
   @Test
