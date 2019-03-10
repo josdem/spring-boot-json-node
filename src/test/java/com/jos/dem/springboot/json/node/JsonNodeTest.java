@@ -47,7 +47,7 @@ public class JsonNodeTest {
   }
 
   @Test
-  @DisplayName("Validate Json Node to Person transformation")
+  @DisplayName("Validate JsonNode to Person transformation")
   void shouldGetPersonFromJsonNode() throws Exception {
     log.info("Running: Validate json to json node transformation at {}", new Date());
 
@@ -62,7 +62,7 @@ public class JsonNodeTest {
   }
 
   @Test
-  @DisplayName("Validate Person to Json Node transformation")
+  @DisplayName("Validate Person to JsonNode transformation")
   void shouldGetJsonNodeFromPerson() throws Exception {
     log.info("Running: Validate person to json node transformation at {}", new Date());
     Person person = new Person(1196, "josdem","joseluis.delacruz@gmail.com");
