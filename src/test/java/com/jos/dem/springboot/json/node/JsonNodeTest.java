@@ -34,14 +34,14 @@ public class JsonNodeTest {
 
 
   @Test
-  @DisplayName("Validate Json to Json Node transformation")
+  @DisplayName("Validate Json to JsonNode transformation")
   void shouldGetJsonNodeFromJson() throws Exception {
     log.info("Running: Validate json to json node transformation at {}", new Date());
 
     assertAll("node",
       () -> assertEquals(1196, node.get("id").intValue(), "Should get id"),
       () -> assertEquals("josdem", node.get("nickname").textValue(), "Should get nickname"),
-      () -> assertEquals("email", node.get("email").textValue(), "should get email")
+      () -> assertEquals("joseluis.delacruz@gmail.com", node.get("email").textValue(), "should get email")
     );
 
   }
@@ -56,7 +56,7 @@ public class JsonNodeTest {
     assertAll("person",
       () -> assertEquals(1196, person.getId(), "Should get id"),
       () -> assertEquals("josdem", person.getNickname(), "Should get nickname"),
-      () -> assertEquals("email", person.getEmail(), "should get email")
+      () -> assertEquals("joseluis.delacruz@gmail.com", person.getEmail(), "should get email")
     );
 
   }
@@ -71,7 +71,7 @@ public class JsonNodeTest {
     assertAll("person",
       () -> assertEquals(1196, node.get("id").intValue(), "Should get id"),
       () -> assertEquals("josdem", node.get("nickname").textValue(), "Should get nickname"),
-      () -> assertEquals("email", node.get("email").textValue(), "should get email")
+      () -> assertEquals("joseluis.delacruz@gmail.com", node.get("email").textValue(), "should get email")
     );
 
   }
@@ -85,13 +85,14 @@ public class JsonNodeTest {
     String email = "joseluis.delacruz@gmail.com";
 
     JsonNode node = mapper.createObjectNode();
-    ((ObjectNode) node).put("id", 2016);
-    ((ObjectNode) node).put("name", "baeldung.com");
+    ((ObjectNode) node).put("id", 1196);
+    ((ObjectNode) node).put("nickname", "josdem");
+    ((ObjectNode) node).put("email", "joseluis.delacruz@gmail.com");
 
     assertAll("person",
       () -> assertEquals(1196, node.get("id").intValue(), "Should get id"),
       () -> assertEquals("josdem", node.get("nickname").textValue(), "Should get nickname"),
-      () -> assertEquals("email", node.get("email").textValue(), "should get email")
+      () -> assertEquals("joseluis.delacruz@gmail.com", node.get("email").textValue(), "should get email")
     );
 
   }
