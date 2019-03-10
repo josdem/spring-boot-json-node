@@ -1,4 +1,4 @@
-package com.jos.dem.springboot.node.object;
+package com.jos.dem.springboot.json.node;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

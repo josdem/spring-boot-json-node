@@ -1,4 +1,4 @@
-package com.jos.dem.springboot.node.object.model;
+package com.jos.dem.springboot.json.node.model;
 
 import lombok.Setter;
 import lombok.Getter;

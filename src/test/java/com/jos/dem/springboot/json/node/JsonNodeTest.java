@@ -1,4 +1,4 @@
-package com.jos.dem.springboot.node.object;
+package com.jos.dem.springboot.json.node;
 
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -12,9 +12,9 @@ import org.junit.jupiter.api.BeforeEach;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.node.ObjectNode;
+import com.fasterxml.jackson.databind.json.nodeNode;
 
-import com.jos.dem.springboot.node.object.model.Person;
+import com.jos.dem.springboot.json.node.model.Person;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

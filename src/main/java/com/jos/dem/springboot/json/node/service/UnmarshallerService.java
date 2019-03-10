@@ -1,9 +1,9 @@
-package com.jos.dem.springboot.node.object.service;
+package com.jos.dem.springboot.json.node.service;
 
 import java.io.File;
 import java.io.IOException;
 
-import com.jos.dem.springboot.node.object.model.Event;
+import com.jos.dem.springboot.json.node.model.Event;
 
 public interface UnmarshallerService {
 

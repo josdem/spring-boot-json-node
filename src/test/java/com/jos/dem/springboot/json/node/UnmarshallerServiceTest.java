@@ -1,4 +1,4 @@
-package com.jos.dem.springboot.node.object;
+package com.jos.dem.springboot.json.node;
 
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -22,9 +22,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.jos.dem.springboot.node.object.model.Event;
-import com.jos.dem.springboot.node.object.model.Message;
-import com.jos.dem.springboot.node.object.service.UnmarshallerService;
+import com.jos.dem.springboot.json.node.model.Event;
+import com.jos.dem.springboot.json.node.model.Message;
+import com.jos.dem.springboot.json.node.service.UnmarshallerService;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

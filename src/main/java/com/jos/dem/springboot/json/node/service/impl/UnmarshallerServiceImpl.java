@@ -1,4 +1,4 @@
-package com.jos.dem.springboot.node.object.service.impl;
+package com.jos.dem.springboot.json.node.service.impl;
 
 import java.io.File;
 import java.io.InputStream;
@@ -10,8 +10,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import org.springframework.stereotype.Service;
 
-import com.jos.dem.springboot.node.object.model.Event;
-import com.jos.dem.springboot.node.object.service.UnmarshallerService;
+import com.jos.dem.springboot.json.node.model.Event;
+import com.jos.dem.springboot.json.node.service.UnmarshallerService;
 
 @Service
 public class UnmarshallerServiceImpl implements UnmarshallerService {
