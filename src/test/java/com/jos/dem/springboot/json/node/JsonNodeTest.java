@@ -12,7 +12,7 @@ import org.junit.jupiter.api.BeforeEach;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.json.nodeNode;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 
 import com.jos.dem.springboot.json.node.model.Person;
 
