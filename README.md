@@ -12,3 +12,6 @@ This project shows how to work with Jackson JsonNode
 gradle test
 ```
 
+#### Read this as reference:
+
+* https://josdem.io/techtalk/spring/spring_boot_json_node/
