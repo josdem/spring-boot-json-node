@@ -22,7 +22,7 @@ public class UnmarshallerServiceImpl implements UnmarshallerService {
   private ObjectMapper mapper = new ObjectMapper();
 
   @PostConstruct
-	public void setup() throws Exception {
+	public void setup() {
     mapper.registerModule(new JavaTimeModule());
 	}
 

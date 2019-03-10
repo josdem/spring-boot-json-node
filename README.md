@@ -6,11 +6,18 @@ Spring Boot JsonNode
 
 This project shows how to work with Jackson JsonNode
 
-#### To run the project
+#### To run the project with Gradle
 
 ```bash
 gradle test
 ```
+
+#### To run the project with Maven
+
+```bash
+mvn test
+```
+
 
 #### Read this as reference:
 
