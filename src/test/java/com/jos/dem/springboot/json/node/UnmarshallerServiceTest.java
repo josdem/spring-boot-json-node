@@ -6,10 +6,7 @@ import com.jos.dem.springboot.json.node.model.Message;
 import com.jos.dem.springboot.json.node.service.UnmarshallerService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -41,9 +38,9 @@ class UnmarshallerServiceTest {
     }
 
     @Test
-    @DisplayName("Validate Event values from ClockIn Json file")
-    void shouldGetEventFromClockInFile() throws Exception {
-        log.info("Running: Validate Event values from ClockIn Json file at {}", new Date());
+    @DisplayName("Validate Event value from ClockIn Json file")
+    void shouldGetEventFromClockInFile(TestInfo testInfo) {
+        log.info("Running: {}", testInfo.getDisplayName());
 
         assertAll("event",
                 () -> assertEquals("fbe07c89-ffa7-4c86-9832-5f75cf765737", event.getBatchId(), "Should get batch id"),
@@ -55,8 +52,8 @@ class UnmarshallerServiceTest {
 
     @Test
     @DisplayName("Validate Message values from Event")
-    void shouldGetMessageFromEvent() throws Exception {
-        log.info("Running: Validate Message values from event at {}", new Date());
+    void shouldGetMessageFromEvent(TestInfo testInfo) {
+        log.info("Running: {}", testInfo.getDisplayName());
 
         assertAll("message",
                 () -> assertEquals("4aeaa175-e46d-42eb-83d3-cd02865d4863", message.getMessageId(), "Should get message id"),
@@ -67,9 +64,9 @@ class UnmarshallerServiceTest {
 
     @Test
     @DisplayName("Validate Data values from message")
-    void shouldGetDataFromMessage() throws Exception {
-        log.info("Running: Validate Data values from message at {}", new Date());
-
+    void shouldGetDataFromMessage(TestInfo testInfo) {
+        log.info("Running: {}", testInfo.getDisplayName());
+        
         JsonNode data = message.getData();
         assertAll("data",
                 () -> assertEquals("Jose", data.get("firstname").textValue(), "Should get Firstname"),
@@ -80,11 +77,6 @@ class UnmarshallerServiceTest {
                 () -> assertEquals("2019-03-09T07:36:43-05:00", data.get("clockInDateTime").textValue(), "Should get clockIn time")
         );
 
-    }
-
-    @AfterEach
-    void finish() throws Exception {
-        log.info("Test execution finished");
     }
 
 }

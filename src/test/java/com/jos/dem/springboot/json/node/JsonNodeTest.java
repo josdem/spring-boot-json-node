@@ -5,10 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.jos.dem.springboot.json.node.model.Person;
 import lombok.extern.slf4j.Slf4j;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 import java.util.Date;
 
@@ -19,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class JsonNodeTest {
 
     private JsonNode node;
-    private ObjectMapper mapper = new ObjectMapper();
+    private final ObjectMapper mapper = new ObjectMapper();
 
     @BeforeEach
     void init() throws Exception {
@@ -31,8 +28,8 @@ class JsonNodeTest {
 
     @Test
     @DisplayName("Validate Json to JsonNode transformation")
-    void shouldGetJsonNodeFromJson() throws Exception {
-        log.info("Running: Validate json to json node transformation at {}", new Date());
+    void shouldGetJsonNodeFromJson(TestInfo testInfo) {
+        log.info("Running: {}", testInfo.getDisplayName());
 
         assertAll("node",
                 () -> assertEquals(1196, node.get("id").intValue(), "Should get id"),
@@ -44,8 +41,8 @@ class JsonNodeTest {
 
     @Test
     @DisplayName("Validate JsonNode to Person transformation")
-    void shouldGetPersonFromJsonNode() throws Exception {
-        log.info("Running: Validate json to json node transformation at {}", new Date());
+    void shouldGetPersonFromJsonNode(TestInfo testInfo) throws Exception {
+        log.info("Running: {}", testInfo.getDisplayName());
 
         Person person = mapper.treeToValue(node, Person.class);
 
@@ -59,8 +56,9 @@ class JsonNodeTest {
 
     @Test
     @DisplayName("Validate Person to JsonNode transformation")
-    void shouldGetJsonNodeFromPerson() throws Exception {
-        log.info("Running: Validate person to json node transformation at {}", new Date());
+    void shouldGetJsonNodeFromPerson(TestInfo testInfo) {
+        log.info("Running: {}", testInfo.getDisplayName());
+
         Person person = new Person(1196, "josdem", "joseluis.delacruz@gmail.com");
         JsonNode node = mapper.valueToTree(person);
 
@@ -74,16 +72,18 @@ class JsonNodeTest {
 
     @Test
     @DisplayName("Validate Arguments to Json Node transformation")
-    void shouldGetJsonNodeFromArguments() throws Exception {
-        log.info("Running: Validate arguments to json node transformation at {}", new Date());
+    void shouldGetJsonNodeFromArguments(TestInfo testInfo) {
+        log.info("Running: {}", testInfo.getDisplayName());
+
         Integer id = 1196;
         String nickname = "josdem";
         String email = "joseluis.delacruz@gmail.com";
 
         JsonNode node = mapper.createObjectNode();
-        ((ObjectNode) node).put("id", 1196);
-        ((ObjectNode) node).put("nickname", "josdem");
-        ((ObjectNode) node).put("email", "joseluis.delacruz@gmail.com");
+        ObjectNode objectNode = ((ObjectNode) node);
+        objectNode.put("id", 1196);
+        objectNode.put("nickname", "josdem");
+        objectNode.put("email", "joseluis.delacruz@gmail.com");
 
         assertAll("person",
                 () -> assertEquals(1196, node.get("id").intValue(), "Should get id"),
@@ -91,11 +91,6 @@ class JsonNodeTest {
                 () -> assertEquals("joseluis.delacruz@gmail.com", node.get("email").textValue(), "should get email")
         );
 
-    }
-
-    @AfterEach
-    void finish() throws Exception {
-        log.info("Test execution finished");
     }
 
 }
