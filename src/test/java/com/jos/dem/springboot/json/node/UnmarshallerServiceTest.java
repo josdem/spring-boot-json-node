@@ -4,12 +4,12 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.jos.dem.springboot.json.node.model.Event;
 import com.jos.dem.springboot.json.node.model.Message;
 import com.jos.dem.springboot.json.node.service.UnmarshallerService;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -20,17 +20,16 @@ import java.util.Date;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+@Slf4j
 @SpringBootTest
+@RequiredArgsConstructor(onConstructor_ = @Autowired)
 class UnmarshallerServiceTest {
 
-    private Logger log = LoggerFactory.getLogger(this.getClass());
-
-    @Autowired
-    private UnmarshallerService service;
 
     private Event event;
     private Message message;
-    private Message[] messages;
+
+    private final UnmarshallerService service;
 
     @BeforeEach
     void init() throws Exception {
