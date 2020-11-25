@@ -2,12 +2,13 @@ package com.jos.dem.springboot.json.node;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.jos.dem.springboot.json.node.model.Person;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.*;
 
-import java.util.Date;
+import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -79,17 +80,23 @@ class JsonNodeTest {
         String nickname = "josdem";
         String email = "joseluis.delacruz@gmail.com";
 
+        ObjectNode object = mapper.convertValue(Map.of("orderId", "888123"), ObjectNode.class);
+
         JsonNode node = mapper.createObjectNode();
         ObjectNode objectNode = ((ObjectNode) node);
         objectNode.put("id", 1196);
         objectNode.put("nickname", "josdem");
         objectNode.put("email", "joseluis.delacruz@gmail.com");
+        ArrayNode arrayNode = objectNode.putArray("orders");
+        arrayNode.add(object);
 
         assertAll("person",
                 () -> assertEquals(1196, node.get("id").intValue(), "Should get id"),
                 () -> assertEquals("josdem", node.get("nickname").textValue(), "Should get nickname"),
                 () -> assertEquals("joseluis.delacruz@gmail.com", node.get("email").textValue(), "should get email")
         );
+
+        log.info("jsonNode: {}", node.toString());
 
     }
 
